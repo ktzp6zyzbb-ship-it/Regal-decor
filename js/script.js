@@ -21,10 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  // Estimate form. When FORM_ENDPOINT is set (a Formspree form URL), requests
-  // are delivered to Regal Decor automatically. Until then, the form opens a
-  // pre-filled text message to the business phone.
-  var FORM_ENDPOINT = '';
+  // Estimate form: requests are emailed to Regal Decor through FormSubmit.
+  // If delivery fails, it falls back to a pre-filled text to the business phone.
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/rbedregal53@gmail.com';
   var form = document.getElementById('estimate-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -47,9 +46,14 @@ document.addEventListener('DOMContentLoaded', function () {
       var button = form.querySelector('button[type="submit"]');
       button.disabled = true;
       data.append('_subject', 'New estimate request: ' + data.get('service'));
+      data.append('_template', 'table');
       fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
         .then(function (res) {
           if (!res.ok) throw new Error('Request failed');
+          return res.json();
+        })
+        .then(function (json) {
+          if (String(json.success) !== 'true') throw new Error(json.message || 'Request failed');
           form.innerHTML = '<h3>Thank you!</h3><p class="form-note">Regal Decor has your request and will contact you soon.</p>';
         })
         .catch(function () {
