@@ -150,9 +150,11 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 
 /* Our work */
 .work-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.work-grid .work-item { flex: 0 1 calc((100% - 40px) / 3); min-width: 260px; }
+.work-grid .work-item { flex: 0 1 calc((100% - 60px) / 4); }
+.work-grid .work-feature { flex-basis: calc((100% - 20px) / 2); }
+.work-feature img { aspect-ratio: 4 / 5; }
 @media (max-width: 900px) { .work-grid .work-item { flex-basis: calc((100% - 20px) / 2); } }
-@media (max-width: 600px) { .work-grid .work-item { flex-basis: 100%; min-width: 0; } }
+@media (max-width: 600px) { .work-grid .work-item { flex-basis: 100%; } }
 .work-item { margin: 0; background: #fff; border: 1px solid #ecdcb0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .work-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
 .work-item img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .3s; }
