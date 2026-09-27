@@ -114,6 +114,8 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 .section-head p:last-child { color: var(--muted); }
 
 .services { background: #fff; }
+.work { background: var(--cream); }
+.process { background: #fff; }
 .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .feature {
   background: var(--burgundy); color: var(--gold-pale);
@@ -144,6 +146,25 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 .card i { font-size: 1.6rem; color: var(--burgundy); margin-bottom: 12px; }
 .card h4 { font-size: 1.1rem; }
 .card p { margin: 0; color: var(--muted); font-size: .97rem; }
+
+/* Our work */
+.work-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.work-grid .work-item { flex: 0 1 calc((100% - 40px) / 3); min-width: 260px; }
+@media (max-width: 900px) { .work-grid .work-item { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 600px) { .work-grid .work-item { flex-basis: 100%; min-width: 0; } }
+.work-item { margin: 0; background: #fff; border: 1px solid #ecdcb0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.work-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.work-item img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .3s; }
+.work-open:hover img { transform: scale(1.03); }
+.work-item figcaption { padding: 12px 16px; font-family: var(--serif); color: var(--burgundy); border-top: 3px solid var(--gold); }
+
+.lightbox { padding: 0; border: 0; background: transparent; max-width: 94vw; max-height: 92vh; }
+.lightbox::backdrop { background: rgba(30, 10, 14, .85); }
+.lightbox img { max-width: 94vw; max-height: 92vh; object-fit: contain; border-radius: 6px; }
+.lightbox-close {
+  position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; border-radius: 50%;
+  border: 0; background: var(--burgundy); color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
 
 /* Process */
 .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: none; }

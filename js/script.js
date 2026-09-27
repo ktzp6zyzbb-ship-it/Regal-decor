@@ -21,6 +21,23 @@ document.addEventListener('DOMContentLoaded', function () {
     yearEl.textContent = new Date().getFullYear();
   }
 
+  // Our Work gallery: tap a photo to view it larger.
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox && lightbox.showModal) {
+    var lbImg = lightbox.querySelector('img');
+    document.querySelectorAll('.work-open').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var img = btn.querySelector('img');
+        lbImg.src = btn.getAttribute('data-full');
+        lbImg.alt = img.alt;
+        lightbox.showModal();
+      });
+    });
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-close')) lightbox.close();
+    });
+  }
+
   // Estimate form: requests are emailed to Regal Decor through FormSubmit.
   // If delivery fails, it falls back to a pre-filled text to the business phone.
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/rbedregal53@gmail.com';
