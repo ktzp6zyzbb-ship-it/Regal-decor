@@ -49,6 +49,7 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 .topbar-inner { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; flex-wrap: wrap; }
 .topbar a { text-decoration: none; }
 .topbar i { margin-right: 4px; }
+.topbar-contact { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 
 .site-header {
   position: sticky; top: 0; z-index: 50;
@@ -206,6 +207,8 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
   display: block; text-decoration: none; font-weight: 700;
   font-size: clamp(2rem, 5vw, 3.1rem); margin: 6px 0;
 }
+.plaque-email { display: block; text-decoration: none; font-size: clamp(1rem, 2.4vw, 1.3rem); margin: 0 0 10px; word-break: break-word; }
+.plaque-email:hover { text-decoration: underline; }
 .plaque-url { font-weight: 700; font-size: clamp(1.1rem, 2.6vw, 1.6rem); text-decoration: none; letter-spacing: .02em; }
 .plaque-phone:hover, .plaque-url:hover { text-decoration: underline; }
 
@@ -264,7 +267,7 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 }
 @media (max-width: 480px) {
   .steps { grid-template-columns: 1fr; }
-  .topbar-inner { justify-content: center; }
+  .topbar-inner, .topbar-contact { justify-content: center; }
   .plaque-title { font-size: 1.8rem; }
   .estimate-form { padding: 22px; }
 }
