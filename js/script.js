@@ -21,7 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  // Estimate form: opens a pre-filled text message to Regal Decor.
+  // Estimate form. When FORM_ENDPOINT is set (a Formspree form URL), requests
+  // are delivered to Regal Decor automatically. Until then, the form opens a
+  // pre-filled text message to the business phone.
+  var FORM_ENDPOINT = '';
   var form = document.getElementById('estimate-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -32,7 +35,27 @@ document.addEventListener('DOMContentLoaded', function () {
         'Phone: ' + data.get('phone') + '\n' +
         'Service: ' + data.get('service') +
         (data.get('details') ? '\nDetails: ' + data.get('details') : '');
-      window.location.href = 'sms:+12407937826?&body=' + encodeURIComponent(body);
+      var openText = function () {
+        window.location.href = 'sms:+12407937826?&body=' + encodeURIComponent(body);
+      };
+
+      if (!FORM_ENDPOINT) {
+        openText();
+        return;
+      }
+
+      var button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      data.append('_subject', 'New estimate request: ' + data.get('service'));
+      fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Request failed');
+          form.innerHTML = '<h3>Thank you!</h3><p class="form-note">Regal Decor has your request and will contact you soon.</p>';
+        })
+        .catch(function () {
+          button.disabled = false;
+          openText();
+        });
     });
   }
 });
