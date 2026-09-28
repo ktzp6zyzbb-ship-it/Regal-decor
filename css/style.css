@@ -84,10 +84,6 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
   color: var(--burgundy);
   font-family: var(--serif);
 }
-.plaque-title { font-size: 2.2rem; font-weight: 700; margin: 0 0 12px; }
-.plaque-castle { width: 170px; height: 128px; margin: 0 auto; color: var(--burgundy); }
-.plaque-quote { font-size: 1.1rem; margin: 14px 0 8px; }
-.plaque-lines { font-style: italic; margin: 0; }
 
 /* Hero */
 .hero {
@@ -106,7 +102,22 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 22px; }
 .hero-badges { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 20px; font-weight: 600; }
 .hero-badges i { color: var(--burgundy); margin-right: 6px; }
-.hero-plaque { max-width: 440px; justify-self: center; width: 100%; }
+.hero-photo {
+  position: relative; margin: 0; justify-self: center; width: 100%; max-width: 440px;
+  padding: 10px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 45%, #c99f45 70%, var(--gold-light));
+  box-shadow: var(--shadow);
+}
+.hero-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; outline: 2px solid var(--burgundy); outline-offset: -6px; }
+.hero-photo figcaption {
+  position: absolute; left: 50%; bottom: -18px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  padding: 8px 18px; border-radius: 999px;
+  background: var(--burgundy); color: var(--gold-light);
+  font-family: var(--serif); font-style: italic; font-size: .95rem;
+  border: 2px solid var(--gold); box-shadow: var(--shadow);
+}
+.hero-photo-castle { width: 24px; height: 18px; color: var(--gold); }
 
 /* Sections */
 .section { padding: 80px 0; }
@@ -248,7 +259,7 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 /* Responsive */
 @media (max-width: 900px) {
   .hero-inner, .why-inner, .estimate-inner { grid-template-columns: 1fr; }
-  .hero-plaque { max-width: 380px; }
+  .hero-photo { max-width: 380px; }
   .steps { grid-template-columns: 1fr 1fr; row-gap: 36px; }
   .why-emblem { max-width: 220px; }
 }
@@ -270,6 +281,5 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 @media (max-width: 480px) {
   .steps { grid-template-columns: 1fr; }
   .topbar-inner, .topbar-contact { justify-content: center; }
-  .plaque-title { font-size: 1.8rem; }
   .estimate-form { padding: 22px; }
 }
