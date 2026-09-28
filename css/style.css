@@ -102,22 +102,28 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 22px; }
 .hero-badges { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 20px; font-weight: 600; }
 .hero-badges i { color: var(--burgundy); margin-right: 6px; }
-.hero-photo {
-  position: relative; margin: 0; justify-self: center; width: 100%; max-width: 440px;
-  padding: 10px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--gold-light), var(--gold) 45%, #c99f45 70%, var(--gold-light));
+.yard-sign {
+  justify-self: center; width: 100%; max-width: 440px;
+  background: #fff; border: 1px solid #e3dccb; border-radius: 8px;
   box-shadow: var(--shadow);
+  padding: 30px 24px 28px; text-align: center;
+  color: #262626; font-family: var(--sans); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em; line-height: 1.25;
 }
-.hero-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; outline: 2px solid var(--burgundy); outline-offset: -6px; }
-.hero-photo figcaption {
-  position: absolute; left: 50%; bottom: -18px; transform: translateX(-50%);
-  display: flex; align-items: center; gap: 8px; white-space: nowrap;
-  padding: 8px 18px; border-radius: 999px;
-  background: var(--burgundy); color: var(--gold-light);
-  font-family: var(--serif); font-style: italic; font-size: .95rem;
-  border: 2px solid var(--gold); box-shadow: var(--shadow);
+.yard-sign p { margin: 0; }
+.ys-tagline { font-size: .95rem; }
+.ys-crest { width: 128px; height: auto; margin: 10px auto 0; }
+.ys-name {
+  font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif; font-weight: 400;
+  text-transform: none; letter-spacing: 0; line-height: 1;
+  font-size: clamp(3rem, 9vw, 4.2rem); color: #8a3b40; margin: -6px 0 10px !important;
 }
-.hero-photo-castle { width: 24px; height: 18px; color: var(--gold); }
+.ys-services { font-size: .95rem; margin-bottom: 14px !important; }
+.ys-call { font-size: 1rem; }
+.ys-phone { display: block; text-decoration: none; color: #262626; font-size: clamp(1.9rem, 6vw, 2.4rem); letter-spacing: .08em; margin: 4px 0; }
+.ys-url { display: block; text-decoration: none; color: #8a3b40; font-size: 1.05rem; letter-spacing: .14em; margin-bottom: 6px; }
+.ys-phone:hover, .ys-url:hover { text-decoration: underline; }
+.ys-owner, .ys-licensed { font-size: 1rem; }
 
 /* Sections */
 .section { padding: 80px 0; }
@@ -259,7 +265,7 @@ h2 em, h1 em { font-style: italic; font-weight: 400; }
 /* Responsive */
 @media (max-width: 900px) {
   .hero-inner, .why-inner, .estimate-inner { grid-template-columns: 1fr; }
-  .hero-photo { max-width: 380px; }
+  .yard-sign { max-width: 380px; }
   .steps { grid-template-columns: 1fr 1fr; row-gap: 36px; }
   .why-emblem { max-width: 220px; }
 }
